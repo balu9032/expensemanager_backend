@@ -1,16 +1,20 @@
-# Stage 1: Build the app using Maven
-FROM maven:3.8.5-openjdk-17 AS build
+# Stage 1: Build the application using Maven and JDK 21
+FROM maven:3.9.4-eclipse-temurin-21 as build
+
 WORKDIR /app
 
-# Copy everything (pom.xml + src)
-COPY . .
+COPY pom.xml .
+COPY src ./src
 
 # Build the app and skip tests
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the app with lightweight JDK image
-FROM openjdk:17-jdk-alpine
-COPY --from=build /app/target/*.jar /app.jar
+# Stage 2: Run the app with lightweight JDK 21 image
+FROM eclipse-temurin:21-jdk
 
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
+# Run the app
+ENTRYPOINT ["java", "-jar", "app.jar"]
