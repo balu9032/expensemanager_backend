@@ -1,0 +1,26 @@
+# Maven target directory
+/target/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# IDE files
+/.idea/
+/*.iml
+*.class
+
+# Maven Wrapper files
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
