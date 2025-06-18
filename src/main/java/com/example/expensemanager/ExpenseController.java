@@ -35,17 +35,17 @@ public class ExpenseController {
       return (Expense)this.expenseRepository.save(expense);
    }
 
-   @PutMapping({"/{id}"})
-   public Expense updateExpense(@PathVariable Long id, @RequestBody Expense expenseDetails) {
-      Expense expense = (Expense)this.expenseRepository.findById(id).orElseThrow(() -> {
-         return new RuntimeException("Expense not found with id " + String.valueOf(id));
-      });
-      expense.setDesc(expenseDetails.getDesc());
-      expense.setAmount(expenseDetails.getAmount());
-      expense.setDate(expenseDetails.getDate());
-      expense.setAmountType(expenseDetails.getAmountType());
-      return (Expense)this.expenseRepository.save(expense);
-   }
+   //@PutMapping({"/{id}"})
+   //public Expense updateExpense(@PathVariable Long id, @RequestBody Expense expenseDetails) {
+      //Expense expense = (Expense)this.expenseRepository.findById(id).orElseThrow(() -> {
+         //return new RuntimeException("Expense not found with id " + String.valueOf(id));
+      //});
+     // expense.setDesc(expenseDetails.getDesc());
+      //expense.setAmount(expenseDetails.getAmount());
+     // expense.setDate(expenseDetails.getDate());
+    //  expense.setAmountType(expenseDetails.getAmountType());
+      //return (Expense)this.expenseRepository.save(expense);
+  // }
 
    @DeleteMapping({"/{id}"})
    public void deleteExpense(@PathVariable Long id) {
